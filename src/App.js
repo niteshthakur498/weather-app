@@ -9,11 +9,11 @@ const API_KEY = "373d1a1f0dd59e296830aec2b6776ccc";
 
 class App extends React.Component{
   state = {
-    temperature: undefined,
-    city: undefined,
-    country: undefined,
-    humidity: undefined,
-    description: undefined,
+    temperature: "Can't Measure",
+    city: "Mysterious",
+    country: "Unwknown",
+    humidity: "High",
+    description: "None",
     error: undefined
   };
   getWeather = async (e) => {
@@ -54,22 +54,30 @@ class App extends React.Component{
         <div>
           <div className="wrapper">
             <div className="main">
-              
+              <div className="container">
+                <div className="row">
+                  <div className="col-xs-5 title-container">
+                    <Titles />
+                    <Form getWeather={this.getWeather} />
+                  </div>
+                  <div className="col-xs-7 weather-container">                    
+                    <Weather 
+                      temperature={this.state.temperature} 
+                      humidity={this.state.humidity}
+                      city={this.state.city}
+                      country={this.state.country}
+                      description={this.state.description}
+                      error={this.state.error}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       );
   }
 };
-// <Titles />
-//           <Form getWeather = {this.getWeather}/>
-//           <Weather 
-//               temperature={this.state.temperature} 
-//               humidity={this.state.humidity}
-//               city={this.state.city}
-//               country={this.state.country}
-//               description={this.state.description}
-//               error={this.state.error}            
-//           />
+
 
 export default App; 
